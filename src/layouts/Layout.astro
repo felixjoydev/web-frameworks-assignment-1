@@ -32,13 +32,13 @@ import "../styles/style.css";
           <div>
             <ul class="link-block">
               <li class={path === "/" ? "active" : ""}><a href="/">Home</a></li>
-              <li class={path === "/about" ? "active" : ""}>
+              <li class={path.startsWith("/about") ? "active" : ""}>
                 <a href="/about">About</a>
               </li>
               <li class={path.startsWith("/news") ? "active" : ""}>
                 <a href="/news/">News</a>
               </li>
-              <li class={path === "/playlist" ? "active" : ""}>
+              <li class={path.startsWith("/playlist") ? "active" : ""}>
                 <a href="/playlist">Playlist</a>
               </li>
             </ul>
