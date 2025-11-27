@@ -1,0 +1,36 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+type NewsEntry = CollectionEntry<"news">;
+
+// 1. Tell Astro which /news/[slug] pages to build
+export async function getStaticPaths() {
+  const posts: NewsEntry[] = await getCollection("news");
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post }, // pass the whole post into the page
+  }));
+}
+
+// 2. Get the post for this slug
+const { post } = Astro.props;
+
+// 3. Prepare the markdown component
+const { Content } = await post.render();
+---
+
+<Layout>
+  <div class="main-container">
+    <article class="news-detail">
+      <h1>{post.data.title}</h1>
+      <date>{post.data.date}</date>
+
+      <img src={post.data.image} alt={post.data.title} />
+
+      <!-- This renders the body of the markdown file -->
+      <Content />
+    </article>
+  </div>
+</Layout>

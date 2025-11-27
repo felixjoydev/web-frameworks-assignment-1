@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <div class="main-container">
+    <section class="playlist">
+      <div class="title-row">
+        <h1>Playlist</h1>
+        <div>
+          <a href="#" class="btns btn-shuffle">
+            <img src="/images/shuffle.svg" />
+            <p>Shuffle</p>
+          </a>
+        </div>
+      </div>
+
+      <form class="playlist-add-form">
+        <input type="text" id="song-input" placeholder="ENTER YOUR SONG NAME" />
+        <button type="submit">
+          <img src="/images/add-to-playlist.svg" />
+          ADD TO PLAYLIST
+        </button>
+      </form>
+
+      <div class="playlist-items"></div>
+    </section>
+    <script type="module" src="/playlist.js"></script>
+  </div></Layout
+>

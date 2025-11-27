@@ -1,0 +1,36 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+type NewsEntry = CollectionEntry<"news">;
+
+const posts: NewsEntry[] = await getCollection("news");
+---
+
+<Layout>
+  <div class="main-container">
+    <section class="news">
+      {
+        posts.map((post: NewsEntry) => (
+          <article class="news-item">
+            <div class="news-img">
+              <img src={post.data.image} alt={post.data.title} />
+            </div>
+
+            <a href={`/news/${post.slug}`} class="news-details">
+              {" "}
+              <div class="news-heading">
+                <h3>{post.data.title}</h3>
+                <p>{post.data.date}</p>
+              </div>
+              <div class="read-news">
+                <p>READ MORE</p>
+                <img src="/images/arrow.svg" alt="" />
+              </div>
+            </a>
+          </article>
+        ))
+      }
+    </section>
+  </div>
+</Layout>

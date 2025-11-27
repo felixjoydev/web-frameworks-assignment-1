@@ -1,0 +1,62 @@
+---
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>The Beatles</title>
+    <link rel="stylesheet" href="/src/styles/style.css" />
+  </head>
+  <body>
+    <div class="main-grid-container">
+      <header class="width-def">
+        <nav>
+          <div>
+            <ul class="social-block">
+              <li><a href="#"><img src="/images/spotify.svg" /></a></li>
+              <li><a href="#"><img src="/images/instagram.svg" /></a></li>
+              <li><a href="#"><img src="/images/twitter.svg" /></a></li>
+              <li><a href="#"><img src="/images/soundcloud.svg" /></a></li>
+              <li><a href="#"><img src="/images/snapchat.svg" /></a></li>
+              <li><a href="#"><img src="/images/facebook.svg" /></a></li>
+            </ul>
+          </div>
+          <div class="logo-block">
+            <a href="/"><img src="/images/beatles-logo.svg" /></a>
+          </div>
+          <div>
+            <ul class="link-block">
+              <li class={path === "/" ? "active" : ""}><a href="/">Home</a></li>
+              <li class={path === "/about" ? "active" : ""}>
+                <a href="/about">About</a>
+              </li>
+              <li class={path.startsWith("/news") ? "active" : ""}>
+                <a href="/news/">News</a>
+              </li>
+              <li class={path === "/playlist" ? "active" : ""}>
+                <a href="/playlist">Playlist</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer>
+        <div class="footer-content width-def">
+          <div><p>Copyright © THEBEATLES.com. All Rights Reserved.</p></div>
+          <div><img src="/images/beatles-logo.svg" /></div>
+          <div><p>DESIGNED BY FELIX JOY</p></div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
