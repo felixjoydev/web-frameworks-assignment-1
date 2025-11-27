@@ -133,6 +133,7 @@ text-align: center;
   }
   
   .width-def {
+    width: 100%;
     padding: 48px 0;
     max-width: 980px;
     margin: 0 auto;
